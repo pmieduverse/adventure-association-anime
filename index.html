@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADVENTURE ASSOCIATION — Official Portal</title>
+  <meta name="description" content="Know Your Potential. Earn Your Rank. Begin Your Adventure.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="loading-overlay" id="loader">
+    <div class="loading-logo">ADVENTURE ASSOCIATION</div>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  </div>
+  <nav class="navbar">
+    <a href="#" class="nav-logo" data-page="landing" onclick="showPage('landing')">
+      <div class="seal">AA</div>
+      <span>ADVENTURE ASSOCIATION</span>
+    </a>
+    <div class="nav-links">
+      <a href="#" data-page="landing">Home</a>
+      <a href="#" data-page="search">Registry</a>
+      <a href="#" data-page="missions">Missions</a>
+      <a href="#" data-page="dashboard">Dashboard</a>
+      <a href="#" data-page="admin">Command</a>
+      <button class="sound-toggle" id="soundBtn" onclick="toggleSound()" title="Toggle sound">🔇</button>
+    </div>
+  </nav>
+  <div id="app">
+    <div class="page active" id="landing">
+      <section class="hero">
+        <div class="hero-badge">✦ Official International Organization ✦</div>
+        <h1 class="gold-text">ADVENTURE ASSOCIATION</h1>
+        <p class="hero-tagline">Every adventurer has a potential waiting to be discovered.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="startRegistration()">REGISTER AS ADVENTURER</button>
+          <button class="btn btn-secondary" onclick="checkExisting()">CHECK EXISTING CARD</button>
+          <button class="btn btn-ghost" onclick="checkExisting()">ADVENTURER LOGIN</button>
+        </div>
+      </section>
+      <section class="section">
+        <h2 class="section-title gold-text">What is Adventure Association?</h2>
+        <p class="section-subtitle">A fictional organization for evaluation, classification, and authorization of adventurers.</p>
+        <div class="about-grid">
+          <div class="about-card"><div class="icon">📋</div><h3>Registration</h3><p>Official identity and unique Adventurer IDs.</p></div>
+          <div class="about-card"><div class="icon">💬</div><h3>Chat Assessment</h3><p>Describe yourself — AI assigns attributes.</p></div>
+          <div class="about-card"><div class="icon">⚡</div><h3>Power Classification</h3><p>40+ powers + custom power registration.</p></div>
+          <div class="about-card"><div class="icon">🏅</div><h3>Rank Assignment</h3><p>E to EX ranks with anime-style ID cards.</p></div>
+          <div class="about-card"><div class="icon">🪪</div><h3>Identification</h3><p>Rank-wise glowing digital Adventurer Cards.</p></div>
+          <div class="about-card"><div class="icon">📜</div><h3>Missions</h3><p>Rank-gated mission board and achievements.</p></div>
+        </div>
+      </section>
+      <section class="section">
+        <h2 class="section-title gold-text">How It Works</h2>
+        <div class="steps-container">
+          <div class="step-item active"><div class="step-num">01</div><div class="step-content"><h4>Registration</h4><p>Identity + anime avatar.</p></div></div>
+          <div class="step-item"><div class="step-num">02</div><div class="step-content"><h4>Origin</h4><p>20+ clans to choose from.</p></div></div>
+          <div class="step-item"><div class="step-num">03</div><div class="step-content"><h4>Assessment</h4><p>Chat/voice or manual attributes.</p></div></div>
+          <div class="step-item"><div class="step-num">04</div><div class="step-content"><h4>Powers</h4><p>Pick 3 or register custom.</p></div></div>
+          <div class="step-item"><div class="step-num">05</div><div class="step-content"><h4>Rank & Card</h4><p>Analysis, rank reveal, official card.</p></div></div>
+        </div>
+        <div class="text-center mt-2"><button class="btn btn-primary" onclick="startRegistration()">BEGIN REGISTRATION</button></div>
+      </section>
+      <footer style="text-align:center;padding:3rem 1rem;color:var(--text-muted);font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.05);">
+        <div style="font-family:var(--font-display);letter-spacing:0.15em;color:var(--accent-gold);margin-bottom:0.5rem;">ADVENTURE ASSOCIATION</div>
+        Know Your Potential. Earn Your Rank. Begin Your Adventure.<br>© 2026 Adventure Association. Anime Edition.
+      </footer>
+    </div>
+    <div class="page" id="register">
+      <div class="wizard-container">
+        <div class="wizard-header">
+          <h2 class="gold-text" id="wizardTitle">Step 1 — Identity</h2>
+          <div class="wizard-progress">
+            <div class="progress-dot active"></div><div class="progress-dot"></div><div class="progress-dot"></div><div class="progress-dot"></div><div class="progress-dot"></div>
+          </div>
+        </div>
+        <div class="wizard-step active" data-step="1">
+          <div class="form-card">
+            <div class="form-row">
+              <div class="form-group"><label>Full Name *</label><input type="text" id="fullName" placeholder="Legal full name" maxlength="60"></div>
+              <div class="form-group"><label>Adventurer Name / Codename *</label><input type="text" id="codename" placeholder="Your chosen title" maxlength="40"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Date of Birth *</label><input type="date" id="dob"></div>
+              <div class="form-group"><label>Gender *</label><select id="gender"><option value="">Select</option><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option><option value="Undisclosed">Prefer not to say</option></select></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Nationality *</label><input type="text" id="nationality" placeholder="e.g. Japanese"></div>
+              <div class="form-group"><label>Region</label><input type="text" id="region" placeholder="City / Region"></div>
+            </div>
+            <div class="form-group"><label>Preferred Language</label><select id="language"><option>English</option><option>Japanese</option><option>Chinese</option><option>Korean</option><option>Spanish</option><option>French</option><option>Other</option></select></div>
+            <div class="form-group">
+              <label>Anime Avatar / Profile</label>
+              <div class="avatar-grid" id="avatarGrid"></div>
+              <div class="photo-upload" style="margin-top:1rem;">
+                <div class="photo-preview" id="photoPreview">📷</div>
+                <div><input type="file" id="photoInput" accept="image/*" style="font-size:0.85rem;"><p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;">Optional photo OR pick anime avatar.</p></div>
+              </div>
+            </div>
+            <div class="id-display" id="idBox" style="display:none;">Adventurer ID will be generated after this step</div>
+            <div class="wizard-nav"><button class="btn btn-ghost" onclick="showPage('landing')">CANCEL</button><button class="btn btn-primary" onclick="nextStep()">CONTINUE →</button></div>
+          </div>
+        </div>
+        <div class="wizard-step" data-step="2">
+          <div class="form-card">
+            <h3 style="margin-bottom:1rem;text-align:center;">SELECT YOUR ORIGIN</h3>
+            <div class="clan-grid" id="clanGrid"></div>
+            <div class="clan-detail" id="clanDetail"></div>
+            <div class="form-group mt-2"><label>Custom Clan Name (optional)</label><input type="text" id="customClan" placeholder="Override with custom designation"></div>
+            <div class="wizard-nav"><button class="btn btn-ghost" onclick="prevStep()">← BACK</button><button class="btn btn-primary" onclick="nextStep()">CONTINUE →</button></div>
+          </div>
+        </div>
+        <div class="wizard-step" data-step="3">
+          <div class="form-card">
+            <h3 style="text-align:center;margin-bottom:0.5rem;">PERSONAL ASSESSMENT</h3>
+            <p style="text-align:center;color:var(--text-secondary);margin-bottom:1rem;font-size:0.9rem;">Describe yourself in chat — AI scores attributes. Or use manual sliders.</p>
+            <div class="assess-tabs">
+              <button type="button" class="assess-tab active" id="tabChat" onclick="switchAssessMode('chat')">💬 Chat Assessment</button>
+              <button type="button" class="assess-tab" id="tabManual" onclick="switchAssessMode('manual')">🎚 Manual Sliders</button>
+            </div>
+            <div id="chatAssessPanel">
+              <div class="chat-box" id="chatBox"><div class="chat-msg bot">Association AI: Describe your combat style, strengths, weaknesses, magic affinity. Example: "I am a fast assassin with shadow magic, weak defense, high willpower."</div></div>
+              <div class="chat-input-row">
+                <input type="text" id="chatInput" placeholder="Type your power story..." onkeydown="if(event.key==='Enter')sendChatMsg()">
+                <button class="btn btn-primary" type="button" onclick="sendChatMsg()">SEND</button>
+                <button class="btn btn-ghost" type="button" onclick="startVoiceChat()" title="Voice">🎤</button>
+              </div>
+              <button class="btn btn-secondary" type="button" style="width:100%;margin-top:0.75rem;" onclick="finalizeChatAssessment()">ANALYZE CHAT &amp; ASSIGN ATTRIBUTES</button>
+              <div id="chatResultNote" style="text-align:center;margin-top:0.75rem;font-size:0.85rem;color:var(--accent-cyan);"></div>
+            </div>
+            <div id="manualAssessPanel" class="hidden">
+              <div class="attr-section"><h4>Physical</h4>
+                <div class="slider-group"><div class="slider-header"><span>Strength</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="strength" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Speed</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="speed" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Endurance</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="endurance" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Reflex</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="reflex" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Agility</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="agility" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Stamina</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="stamina" min="10" max="95" value="50"></div>
+              </div>
+              <div class="attr-section"><h4>Mental</h4>
+                <div class="slider-group"><div class="slider-header"><span>Intelligence</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="intelligence" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Strategy</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="strategy" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Focus</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="focus" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Observation</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="observation" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Decision Making</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="decision" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Willpower</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="willpower" min="10" max="95" value="50"></div>
+              </div>
+              <div class="attr-section"><h4>Combat</h4>
+                <div class="slider-group"><div class="slider-header"><span>Close Combat</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="closeCombat" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Weapon Handling</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="weapon" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Long Range</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="longRange" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Defense</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="defense" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Evasion</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="evasion" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Tactical Ability</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="tactical" min="10" max="95" value="50"></div>
+              </div>
+              <div class="attr-section"><h4>Special</h4>
+                <div class="slider-group"><div class="slider-header"><span>Mana / Energy</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="mana" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Healing</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="healing" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Elemental</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="elemental" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Spiritual</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="spiritual" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Summoning</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="summoning" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Transformation</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="transformation" min="10" max="95" value="50"></div>
+                <div class="slider-group"><div class="slider-header"><span>Perception</span><span class="slider-value">50</span></div><input type="range" class="attr-slider" data-attr="perception" min="10" max="95" value="50"></div>
+              </div>
+            </div>
+            <div class="wizard-nav"><button class="btn btn-ghost" onclick="prevStep()">← BACK</button><button class="btn btn-primary" onclick="nextStep()">CONTINUE →</button></div>
+          </div>
+        </div>
+        <div class="wizard-step" data-step="4">
+          <div class="form-card">
+            <h3 style="text-align:center;margin-bottom:0.5rem;">SELECT YOUR THREE PRIMARY POWERS</h3>
+            <div class="slots-indicator" id="powerSlots">POWER SLOTS: 0 / 3</div>
+            <div class="power-grid" id="powerGrid"></div>
+            <div class="custom-power-box">
+              <h4 style="color:var(--accent-gold);margin-bottom:0.75rem;font-size:0.9rem;">＋ REGISTER CUSTOM POWER</h4>
+              <div class="form-row">
+                <div class="form-group"><label>Power Name</label><input type="text" id="customPowerName" placeholder="e.g. Crimson Lotus Blade" maxlength="40"></div>
+                <div class="form-group"><label>Description</label><input type="text" id="customPowerDesc" placeholder="What does it do?" maxlength="120"></div>
+              </div>
+              <button class="btn btn-secondary" type="button" onclick="addCustomPower()">SYSTEM CLASSIFY &amp; ADD</button>
+              <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">AI decides affinity, rarity &amp; difficulty.</p>
+            </div>
+            <div class="wizard-nav"><button class="btn btn-ghost" onclick="prevStep()">← BACK</button><button class="btn btn-primary" onclick="nextStep()">BEGIN ANALYSIS →</button></div>
+          </div>
+        </div>
+        <div class="wizard-step" data-step="5">
+          <div class="analysis-screen" id="analysisContent"><div class="analysis-loader"></div><p style="color:var(--text-secondary);letter-spacing:0.1em;">PREPARING ASSESSMENT...</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="rank-reveal" id="rankReveal"></div>
+    <div class="page" id="cardPage"><div class="section" style="padding-top:2rem;"><h2 class="section-title gold-text">Official Adventurer Card</h2><p class="section-subtitle">Tap to flip. Rank-wise design.</p><div class="card-stage" id="cardStage"></div><div class="card-actions" id="cardActions"></div></div></div>
+    <div class="page" id="dashboard"><div class="dashboard" id="dashContent"></div></div>
+    <div class="page" id="missions"><div class="section" id="missionsContent"></div></div>
+    <div class="page" id="search"><div class="section" id="searchContent"></div></div>
+    <div class="page" id="admin"><div class="section" id="adminContent"></div></div>
+    <div class="page" id="verifyPage"><div id="verifyContent"></div></div>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
